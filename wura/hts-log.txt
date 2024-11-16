@@ -1,0 +1,23 @@
+HTTrack3.49-2 launched on Thu, 14 Nov 2024 17:20:17 at https://html.ditsolution.net/buddy/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/*
+(webhttrack -q -%i -w https://html.ditsolution.net/buddy/ -O "/Users/eniyan/websites/wurafarms" -n -%P -N0 -s2 -p7 -D -a -K0 -c4 -%k -A25000 -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -%s -%u )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+17:24:13	Error: 	"Not Found" (404) at link https://html.ditsolution.net/buddy/checkout.html (from https://html.ditsolution.net/buddy/)
+17:24:13	Error: 	"Not Found" (404) at link https://html.ditsolution.net/buddy/protfolio-details.html (from https://html.ditsolution.net/buddy/service-details.html)
+17:24:13	Error: 	"Not Found" (404) at link https://html.ditsolution.net/buddy/c (from https://html.ditsolution.net/buddy/shop-details.html)
+17:26:15	Warning: 	HTML file (2457 bytes) retransferred due to lack of cache: https://html.ditsolution.net/buddy/c
+17:26:16	Error: 	"Not Found" (404) at link https://html.ditsolution.net/buddy/c (from https://html.ditsolution.net/buddy/shop-details.html)
+17:26:16	Error: 	"Not Found" (404) at link https://html.ditsolution.net/buddy/assets/css/owl.video.play.png (from https://html.ditsolution.net/buddy/assets/css/owl.carousel.min.css)
+17:26:16	Error: 	"Not Found" (404) at link https://html.ditsolution.net/buddy/assets/webfonts/fa-v4compatibility.woff2 (from https://html.ditsolution.net/buddy/assets/css/all.min.css)
+17:26:16	Error: 	"Not Found" (404) at link https://html.ditsolution.net/buddy/assets/webfonts/fa-v4compatibility.ttf (from https://html.ditsolution.net/buddy/assets/css/all.min.css)
+17:26:16	Error: 	"Not Found" (404) at link https://html.ditsolution.net/buddy/assets/fonts/Flaticond41d.eot? (from https://html.ditsolution.net/buddy/assets/css/flaticon.css)
+17:26:16	Error: 	"Not Found" (404) at link https://html.ditsolution.net/buddy/Version/ (from https://html.ditsolution.net/buddy/assets/js/swiper-bundle.js)
+17:26:16	Error: 	"Not Found" (404) at link https://html.ditsolution.net/buddy/e (from https://html.ditsolution.net/buddy/assets/js/swiper-bundle.js)
+17:26:16	Error: 	"Not Found" (404) at link https://html.ditsolution.net/buddy/t.params.url (from https://html.ditsolution.net/buddy/assets/js/swiper-bundle.js)
+
+HTTrack Website Copier/3.49-2 mirror complete in 5 minutes 59 seconds : 219 links scanned, 297 files written (22471400 bytes overall) [12362058 bytes received at 34434 bytes/sec], 2399574 bytes transferred using HTTP compression in 71 files, ratio 27%, 2.4 requests per connection
+(11 errors, 1 warnings, 0 messages)
