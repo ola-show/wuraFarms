@@ -357,7 +357,7 @@
                       <input 
                         type="tel" 
                         name="phone" 
-                        placeholder="Phone" 
+                        placeholder="Phone Number" 
                         pattern="[0-9]*" 
                         inputmode="numeric" 
                         onkeypress="return onlyNumbers(event)"
