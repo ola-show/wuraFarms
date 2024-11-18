@@ -1732,6 +1732,67 @@
           line-height: 1.4;
         }
       }
+
+      /* Trust Badges Section */
+      .trust-badges {
+        margin-top: 3rem;
+        padding: 2rem 0;
+      }
+
+      .trust-badge {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(176, 113, 47, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .trust-badge:hover {
+        transform: translateY(-5px);
+      }
+
+      .trust-badge i {
+        font-size: 2.5rem; /* Increased icon size */
+        color: #b0712f;
+        margin-bottom: 1rem;
+      }
+
+      .trust-badge span {
+        font-size: 1.2rem; /* Increased text size */
+        font-weight: 600;
+        color: #333;
+        text-align: center;
+      }
+
+      /* Mobile optimization */
+      @media (max-width: 768px) {
+        .trust-badge {
+          padding: 1.2rem;
+          margin-bottom: 1rem;
+        }
+
+        .trust-badge i {
+          font-size: 2rem; /* Still keeping it prominent on mobile */
+        }
+
+        .trust-badge span {
+          font-size: 1.1rem; /* Maintaining readability on mobile */
+        }
+      }
+
+      /* Extra small devices */
+      @media (max-width: 375px) {
+        .trust-badge i {
+          font-size: 1.8rem;
+        }
+
+        .trust-badge span {
+          font-size: 1rem;
+        }
+      }
     </style>
   </head>
 
@@ -2312,17 +2373,82 @@
     <!--==================================================-->
 
     <!--==================================================-->
-    <!-- Start buddy Footer Area -->
+    <!-- Start Footer Area -->
     <!--==================================================-->
-    <section class="footer_area style_three">
-      <div class="container">
-        <div class="footer-bottom-content">
-          <div class="footer-bottom-content-copy">
-            <p>Copyright © 2024 Wura Farms</p>
-          </div>
-        </div>
-      </div>
-    </section>
+
+
+    <section class="footer_area">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-6">
+				<div class="footer_logo">
+					<a href="index.html"><img src="assets/images/fav-icon/icon.png" alt="logo"></a> 
+				</div>
+				<p class="footer_desc">WURA FARMS</p>
+				<div class="footer_social_icon">
+					<ul>
+						<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+						<li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+						<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+						<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="footer-widget-content">
+					<div class="footer-widget-title">
+						<h4>Contact</h4>
+					</div>
+					<div class="footer_contact">
+						<p>Ikorodu, Lagos <br> Nigeria</p>
+						<p>080 433 9224 </p>
+						<p>info@wurafarms.com </p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-2 col-md-6">
+				<!-- <div class="footer-widget-content">
+					<div class="footer-widget-title">
+						<h4>Links</h4>
+					</div>
+					<div class="footer-widget-menu">
+						<ul>
+							<li><a href="#"> About Us</a></li>
+							<li><a href="#"> Faq's</a></li>
+							<li><a href="#"> Contact Us</a></li>
+							<li><a href="#"> Blog</a></li>
+						
+						</ul>
+					</div>
+				</div> -->
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="footer-widget-contact">
+					<div class="footer-widget-title">
+						<h4>Working Time</h4>
+					</div>
+					<div class="footer_contact">
+						<p>Mon - Fri: 9.00am - 5.00pm</p>
+						<p>Saturday: 10.00am - 6.00pm </p>
+						<p>Sunday Closed</p>
+					</div>
+					
+				</div>
+			</div>
+			
+		</div>
+		<div class="row add-border">
+			<div class="col-lg-12">
+				<div class="footer-bottom-content text-center">
+					<div class="footer-bottom-content-copy">
+						<p><span style="color:#b0712f;"> WURA FARMS </span> © 2024. All rights reserved.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</section>
     <!--==================================================-->
     <!-- End buddy Footer Area-->
     <!--==================================================-->
