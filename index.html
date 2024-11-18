@@ -1101,7 +1101,8 @@
       #countdown {
         background-color: white;
         font-weight: 600;
-        color: #b0712f;
+        color: red;
+        font-size: 2rem;
       }
       .countdown-timer {
         margin: 1rem 0;
@@ -1793,6 +1794,90 @@
           font-size: 1rem;
         }
       }
+
+      /* Price display styling */
+      .price-display {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1rem;
+        background: #fff5eb;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+      }
+
+      .price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .price-label {
+        font-size: 16px;
+        color: #333;
+        margin: 0;
+        min-width: 100px;
+      }
+
+      .price, .savings-amount, .discount {
+        font-size: 18px;
+        font-weight: 600;
+        color: #b0712f;
+        margin: 0;
+        text-align: right;
+      }
+
+      .savings-amount {
+        color: #28a745; /* Green for savings */
+      }
+
+      .discount {
+        color: #b0712f; /* Match brand color */
+      }
+
+      .total-savings-row {
+        border-top: 2px solid #b0712f;
+        padding-top: 0.8rem;
+        margin-top: 0.5rem;
+      }
+
+      .total-savings {
+        font-size: 20px;
+        font-weight: 700;
+        color: #28a745;
+        margin: 0;
+        text-align: right;
+      }
+
+      /* Update column positioning */
+      .col-lg-6 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Align content to the left */
+        justify-content: flex-start;
+        padding: 2rem;
+      }
+
+      /* Update any centered text within the column */
+      .col-lg-6 h1,
+      .col-lg-6 p,
+      .col-lg-6 .price-display {
+        text-align: left;
+        width: 100%;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 991px) {
+        .col-lg-6 {
+          padding: 1rem;
+          align-items: center; /* Center on mobile for better layout */
+        }
+        
+        .col-lg-6 h1,
+        .col-lg-6 p {
+          text-align: center; /* Center text on mobile */
+        }
+      }
     </style>
   </head>
 
@@ -2265,9 +2350,19 @@
                     </div>
                   </div>
                   <div class="contact-form">
-                    <div class="price-box">
-                      <h4>Sub Total:</h4>
-                      <p class="price">₦0</p>
+                    <div class="price-display">
+                      <div class="price-row">
+                        <h4 class="price-label">Sub Total:</h4>
+                        <p class="price">₦0</p>
+                      </div>
+                      <div class="price-row">
+                        <h4 class="price-label">Discount:</h4>
+                        <p class="discount">₦0</p>
+                      </div>
+                      <div class="price-row total-savings-row">
+                        <h4 class="price-label">Total Savings:</h4>
+                        <p class="total-savings">₦0</p>
+                      </div>
                     </div>
 
                     <button type="submit" class="order-button">
@@ -2790,6 +2885,83 @@
       window.addEventListener("unload", () => {
         countdownTimer.destroy();
       });
+
+      function calculateDiscount() {
+        // Get values from inputs (default to 0 if empty or negative)
+        let lifeQuantity = parseInt(lifeChickenInput.value) || 0;
+        let packagedQuantity = parseInt(packagedChickenInput.value) || 0;
+
+        // Ensure quantities are not negative
+        lifeQuantity = Math.max(0, lifeQuantity);
+        packagedQuantity = Math.max(0, packagedQuantity);
+
+        // Calculate total number of chickens
+        const totalChickens = lifeQuantity + packagedQuantity;
+        
+        // Calculate discount (₦1000 per chicken, starting from second chicken)
+        let discount = 0;
+        if (totalChickens > 1) {
+            // Subtract 1 from total chickens to exclude first purchase from discount
+            discount = (totalChickens - 1) * 1000;
+        }
+
+        // Get the discount element and update its content
+        const discountElement = document.querySelector(".discount");
+        discountElement.textContent = `₦${discount.toLocaleString("en-NG")}`;
+
+        // For debugging - remove after confirming it works
+        console.log("Total Chickens:", totalChickens);
+        console.log("Discounted Chickens:", totalChickens > 1 ? totalChickens - 1 : 0);
+        console.log("Total Discount:", discount);
+      }
+
+      // Add event listeners to inputs to trigger discount calculation
+      lifeChickenInput.addEventListener("input", calculateDiscount);
+      packagedChickenInput.addEventListener("input", calculateDiscount);
+
+      function calculateTotalSavings() {
+        // Get values from inputs (default to 0 if empty or negative)
+        let lifeQuantity = parseInt(lifeChickenInput.value) || 0;
+        let packagedQuantity = parseInt(packagedChickenInput.value) || 0;
+
+        // Ensure quantities are not negative
+        lifeQuantity = Math.max(0, lifeQuantity);
+        packagedQuantity = Math.max(0, packagedQuantity);
+
+        // Calculate total number of chickens
+        const totalChickens = lifeQuantity + packagedQuantity;
+        
+        // Initialize discount
+        let totalDiscount = 0;
+
+        // Skip first chicken and calculate discounts for remaining chickens
+        if (totalChickens > 1) {
+            for (let i = 2; i <= totalChickens; i++) {
+                if (i % 2 === 0) {
+                    // Even numbered purchases get ₦500 discount
+                    totalDiscount += 500;
+                } else {
+                    // Odd numbered purchases (after first) get ₦1000 discount
+                    totalDiscount += 1000;
+                }
+            }
+        }
+
+        // Update the displays
+        const discountElement = document.querySelector(".discount");
+        const totalSavingsElement = document.querySelector(".total-savings");
+
+        discountElement.textContent = `₦${totalDiscount.toLocaleString("en-NG")}`;
+        totalSavingsElement.textContent = `₦${totalDiscount.toLocaleString("en-NG")}`;
+
+        // For debugging - remove after confirming it works
+        console.log("Total Chickens:", totalChickens);
+        console.log("Total Discount:", totalDiscount);
+      }
+
+      // Add event listeners
+      lifeChickenInput.addEventListener("input", calculateTotalSavings);
+      packagedChickenInput.addEventListener("input", calculateTotalSavings);
     </script>
 
     <!-- jquery js -->
