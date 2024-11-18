@@ -1584,6 +1584,10 @@
           font-size: 1rem;
         }
       }
+
+      .benefits {
+        background-color: #fff;
+      }
     </style>
   </head>
 
@@ -1912,10 +1916,11 @@
               <h4>🎄 Limited Time Offer! 🎄</h4>
               <br />
               <p class="con">
-                Order today and enjoy a special holiday discount! Avoid
-                inflation now and lock in today's price no price hikes, no
-                surprises. Get your organic chicken delivered fresh and ready to
-                cook, just in time for your Christmas and New Year celebrations!
+                Order now and unlock an exclusive holiday discount! Beat
+                inflation by securing today’s price—no price increases, no
+                hidden fees. Get your organic chicken delivered fresh and ready
+                to cook, perfectly timed for your Christmas and New Year
+                celebrations!
               </p>
             </div>
             <div class="contact_infoss">
@@ -1933,23 +1938,27 @@
             <div class="contact-form-box style_two">
               <form action="" method="POST" id="submit-to-google-sheet">
                 <div class="order-benefits mb-4">
-                  <h4 class="text-center mb-3">Order Benefits</h4>
+                  <h4 class="text-center mb-3">Your Benefits</h4>
                   <ul>
                     <li>
                       <i class="bi bi-check-circle-fill text-success"></i>
-                      Free delivery for orders above ₦50,000
+                      Free pickup delivery
                     </li>
                     <li>
                       <i class="bi bi-check-circle-fill text-success"></i>
-                      100% money-back guarantee
+                      100% customer-satisfaction guarantee
                     </li>
                     <li>
                       <i class="bi bi-check-circle-fill text-success"></i>
-                      Same-day delivery available
+                      Next-day pickup delivery available
                     </li>
                     <li>
                       <i class="bi bi-check-circle-fill text-success"></i>
-                      Secure payment options
+                      Secure payment choice options
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success"></i>
+                      3Kg minimum wight or more per chicken
                     </li>
                   </ul>
                 </div>
@@ -2471,9 +2480,10 @@
           const minutes = Math.floor(
             (distance % (1000 * 60 * 60)) / (1000 * 60)
           );
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-          // Update DOM
-          this.element.innerHTML = `${days}d ${hours}h ${minutes}m`;
+          // Update DOM with seconds
+          this.element.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
         },
 
         // Cleanup method
