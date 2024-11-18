@@ -1101,6 +1101,7 @@
       }
       .countdown-timer small {
         color: white;
+        
       }
 
       #countdown {
@@ -2576,7 +2577,9 @@
       const packagedChickenInput = document.querySelector(
         'input[name="packaged"]'
       );
+
       const priceElement = document.querySelector(".price");
+      const discountElement = document.querySelector(".price");
 
       // Function to calculate and display total
       function calculateTotal() {
@@ -2609,7 +2612,7 @@
 
       // Update your form submission JavaScript
       const scriptURL =
-        "https://script.google.com/macros/s/AKfycby87uT0-NQhzxvmdycMXAskA8FaHNq6ZCmmXBKcUh34G81gt6iHztmss_SZaGCgHtghdg/exec";
+        "https://script.google.com/macros/s/AKfycbyIUgMnqOUda4VH1hJZsGXGKzgdjssLfQ2MsTjT2YlrImpoP_8SgnbLfp2NA-GMr24BpA/exec";
       const form = document.forms["submit-to-google-sheet"];
 
       form.addEventListener("submit", (e) => {
@@ -2638,6 +2641,10 @@
         // Add total price and timestamp
         formData.append("total", document.querySelector(".price").textContent);
         formData.append("timestamp", new Date().toISOString());
+        formData.append("discount", document.querySelector(".discount").textContent);
+        formData.append("total-savings", document.querySelector(".total-savings").textContent);
+        formData.append("total-due", document.querySelector(".total-due").textContent);
+
 
         fetch(scriptURL, { method: "POST", body: formData })
           .then((response) => {
@@ -2654,7 +2661,7 @@
 
             // Reset form and total
             form.reset();
-            calculateTotal();
+            // calculateTotal();
           })
           .catch((error) => {
             console.error("Error:", error);
@@ -2946,6 +2953,7 @@
         // Get values from inputs (default to 0 if empty or negative)
         let lifeQuantity = parseInt(lifeChickenInput.value) || 0;
         let packagedQuantity = parseInt(packagedChickenInput.value) || 0;
+        
 
         // Ensure quantities are not negative
         lifeQuantity = Math.max(0, lifeQuantity);
