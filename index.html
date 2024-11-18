@@ -136,6 +136,9 @@
     />
 
     <style>
+      .urgency-section {
+        margin: 50px 0;
+      }
       p.con {
         font-size: 24px;
         line-height: 1.5;
@@ -1079,16 +1082,557 @@
           font-size: 1rem;
         }
       }
+      .countdown-timer small {
+        color: white;
+      }
+
+      #countdown {
+        background-color: white;
+        font-weight: 600;
+        color: #b0712f;
+      }
+      .countdown-timer {
+        margin: 1rem 0;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: white;
+      }
+
+      .countdown-timer span {
+        color: #b0712f;
+        background: rgba(176, 113, 47, 0.1);
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        display: inline-block;
+        min-width: 150px;
+      }
+
+      @media (max-width: 768px) {
+        .countdown-timer {
+          font-size: 1rem;
+        }
+      }
+
+      .exit-popup {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: auto;
+        height: auto;
+        background: transparent;
+        z-index: 9999;
+        animation: slideIn 0.3s ease-in-out;
+      }
+
+      .exit-popup.show {
+        display: block;
+      }
+
+      .exit-popup-content {
+        position: relative;
+        background: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        width: 300px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .close-popup {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        border: none;
+        background: none;
+        color: #666;
+      }
+
+      .close-popup:hover {
+        color: #333;
+      }
+
+      .popup-header h3 {
+        color: #b0712f;
+        margin-bottom: 1rem;
+      }
+
+      .popup-body h4 {
+        color: #333;
+        margin-bottom: 1rem;
+      }
+
+      .popup-body p {
+        color: #666;
+        margin-bottom: 1.5rem;
+      }
+
+      #exitPopupForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      #exitPopupForm input {
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      #exitPopupForm .btn-submit {
+        background: #b0712f;
+        color: white;
+        border: none;
+        padding: 1rem;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      #exitPopupForm .btn-submit:hover {
+        background: #95601f;
+      }
+
+      .popup-footer small {
+        color: #999;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      /* Mobile optimization */
+      @media (max-width: 768px) {
+        .exit-popup {
+          bottom: 10px;
+          right: 10px;
+          left: 10px;
+        }
+
+        .exit-popup-content {
+          width: auto;
+          max-width: 100%;
+        }
+      }
+
+      /* Add this to your CSS */
+      .fixed-popup {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+        width: 300px;
+      }
+
+      .popup-content {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .close-popup {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        border: none;
+        background: none;
+        color: #666;
+      }
+
+      .popup-header h3 {
+        color: #b0712f;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+
+      .popup-body h4 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+
+      .popup-body p {
+        color: #666;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+
+      #exitPopupForm {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      #exitPopupForm input {
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      #exitPopupForm .btn-submit {
+        background: #b0712f;
+        color: white;
+        border: none;
+        padding: 0.8rem;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .popup-footer small {
+        color: #999;
+        font-size: 0.8rem;
+      }
+
+      /* Mobile Optimization */
+      @media (max-width: 768px) {
+        .fixed-popup {
+          bottom: 10px;
+          right: 10px;
+          left: 10px;
+          width: auto;
+        }
+      }
+
+      /* Exit Intent Popup Styles */
+      .exit-intent-popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .exit-intent-popup.show {
+        opacity: 1;
+      }
+
+      .popup-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.7);
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 500px;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+      }
+
+      .exit-intent-popup.show .popup-content {
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .close-popup {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 24px;
+        background: none;
+        border: none;
+        color: #666;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .close-popup:hover {
+        color: #b0712f;
+      }
+
+      .popup-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        animation: bounce 1s infinite;
+      }
+
+      .popup-header h3 {
+        color: #b0712f;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .popup-body h4 {
+        color: #333;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .popup-body p {
+        color: #666;
+        margin-bottom: 1.5rem;
+      }
+
+      #popupForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .form-group {
+        position: relative;
+      }
+
+      #popupForm input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+
+      #popupForm input:focus {
+        border-color: #b0712f;
+        outline: none;
+      }
+
+      .error-message {
+        color: #dc3545;
+        font-size: 0.8rem;
+        margin-top: 0.3rem;
+        display: none;
+      }
+
+      .submit-btn {
+        background: #b0712f;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        position: relative;
+      }
+
+      .submit-btn:hover {
+        background: #95601f;
+      }
+
+      .loading-spinner {
+        display: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #fff;
+        border-top: 2px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .popup-footer {
+        margin-top: 1rem;
+        text-align: center;
+      }
+
+      .popup-footer small {
+        color: #999;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes spin {
+        0% {
+          transform: translateY(-50%) rotate(0deg);
+        }
+        100% {
+          transform: translateY(-50%) rotate(360deg);
+        }
+      }
+
+      /* Mobile Optimization */
+      @media (max-width: 768px) {
+        .popup-content {
+          width: 95%;
+          padding: 1.5rem;
+        }
+
+        .popup-header h3 {
+          font-size: 1.3rem;
+        }
+
+        .popup-body h4 {
+          font-size: 1.1rem;
+        }
+
+        .popup-body p {
+          font-size: 0.9rem;
+        }
+      }
+
+      .urgency-banner {
+        background: linear-gradient(45deg, #b0712f, #95601f);
+        color: white;
+        padding: 10px 0;
+        position: relative;
+      }
+
+      .limited-time-offer {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .offer-badge {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .limited-time-offer h4 {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      #countdown {
+        /* color:rgba(255, 255, 255, 0.1) !important;  */
+      }
+      .countdown-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 15px;
+      }
+
+      .countdown-label {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      .countdown {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 8px 15px;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      /* Pulse Animation */
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .countdown {
+        animation: pulse 2s infinite;
+      }
+
+      /* Mobile Optimization */
+      @media (max-width: 768px) {
+        .urgency-banner .row {
+          text-align: center;
+        }
+
+        .limited-time-offer {
+          justify-content: center;
+          margin-bottom: 10px;
+        }
+
+        .countdown-wrapper {
+          justify-content: center;
+        }
+
+        .offer-badge {
+          font-size: 0.8rem;
+        }
+
+        .limited-time-offer h4 {
+          font-size: 1rem;
+        }
+      }
     </style>
   </head>
 
   <body>
-    <!-- Loader -->
-
+    <!-- Your existing content starts here -->
     <div class="loader-wrapper">
       <span class="loader"></span>
       <div class="loder-section left-section"></div>
       <div class="loder-section right-section"></div>
+    </div>
+
+    <!-- Add this popup HTML right after body tag -->
+    <div class="exit-intent-popup" id="exitPopup">
+      <div class="popup-content">
+        <button class="close-popup" onclick="closePopup()">×</button>
+        <div class="popup-header">
+          <div class="popup-icon">🎁</div>
+          <h3>Wait! Don't Miss Out!</h3>
+        </div>
+        <div class="popup-body">
+          <h4>Get 10% Off Your First Order</h4>
+          <p>
+            Join our community and receive exclusive offers straight to your
+            inbox!
+          </p>
+          <form id="popupForm" onsubmit="handlePopupSubmit(event)">
+            <div class="form-group">
+              <input
+                name="promoEmail"
+                type="email"
+                id="popupEmail"
+                placeholder="Enter your email address"
+                required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              />
+              <div class="error-message"></div>
+            </div>
+            <button type="submit" class="submit-btn">
+              <span class="btn-text">Get My Discount</span>
+              <span class="loading-spinner"></span>
+            </button>
+          </form>
+          <div class="popup-footer">
+            <small
+              >*Yes, I want to receive exclusive offers and discounts</small
+            >
+          </div>
+        </div>
+      </div>
     </div>
 
     <!--==================================================-->
@@ -1098,14 +1642,9 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <span class="limited-offer">🎄 LIMITED TIME HOLIDAY OFFER 🎄</span>
             <h1 class="hero-title">
               Premium Organic Chicken for Your Holiday Feast
             </h1>
-            <div class="countdown-timer">
-              <!-- Add countdown timer to create urgency -->
-              <p>Offer Ends In: <span id="countdown"></span></p>
-            </div>
           </div>
         </div>
       </div>
@@ -1113,6 +1652,27 @@
     <!--==================================================-->
     <!-- End buddy Breadcumb Area -->
     <!--==================================================-->
+    <!-- Add this right after your navigation section and before your main content -->
+    <section class="urgency-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <!-- Urgency Banner -->
+            <div class="urgency-banner">
+              <span class="limited-offer"
+                >🎄 LIMITED TIME HOLIDAY OFFER 🎄</span
+              >
+              <h2 class="offer-title">Holiday Special Deal!</h2>
+
+              <div class="countdown-timer">
+                <!-- Add countdown timer to create urgency -->
+                <p>Offer Ends In: <span id="countdown"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Add this section right after your hero section and before the contact_area section -->
     <section class="social-proof py-5">
       <div class="container">
@@ -1876,93 +2436,64 @@
         track.addEventListener("scroll", checkScroll);
       });
 
-      // Countdown Timer
-      function updateCountdown() {
-        const endDate = new Date();
-        endDate.setHours(23, 59, 59); // Set to end of today
+      // Optimize the countdown function
+      const countdownTimer = {
+        endDate: new Date("December 25, 2024 23:59:59").getTime(),
+        element: null,
+        intervalId: null,
 
-        const now = new Date();
-        const distance = endDate - now;
+        init() {
+          this.element = document.getElementById("countdown");
+          if (!this.element) return;
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          // Initial update
+          this.update();
+          // Set interval for updates
+          this.intervalId = setInterval(() => this.update(), 1000);
+        },
 
-        document.querySelector(".days").textContent = String(days).padStart(
-          2,
-          "0"
-        );
-        document.querySelector(".hours").textContent = String(hours).padStart(
-          2,
-          "0"
-        );
-        document.querySelector(".minutes").textContent = String(
-          minutes
-        ).padStart(2, "0");
-        document.querySelector(".seconds").textContent = String(
-          seconds
-        ).padStart(2, "0");
-      }
+        update() {
+          const now = new Date().getTime();
+          const distance = this.endDate - now;
 
-      setInterval(updateCountdown, 1000);
+          // Stop countdown if date has passed
+          if (distance < 0) {
+            if (this.intervalId) clearInterval(this.intervalId);
+            this.element.innerHTML = "Offer Expired";
+            return;
+          }
 
-      // Dynamic Stock Counter
-      function updateStockCount() {
-        const stockElement = document.getElementById("stockCount");
-        let currentStock = parseInt(stockElement.textContent);
+          // Calculate time units
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60)
+          );
 
-        // Randomly increase or decrease by 1-3
-        const change = Math.floor(Math.random() * 3) + 1;
-        currentStock = Math.max(
-          15,
-          Math.min(50, currentStock + (Math.random() > 0.5 ? change : -change))
-        );
+          // Update DOM
+          this.element.innerHTML = `${days}d ${hours}h ${minutes}m`;
+        },
 
-        stockElement.textContent = currentStock;
-      }
+        // Cleanup method
+        destroy() {
+          if (this.intervalId) {
+            clearInterval(this.intervalId);
+            this.intervalId = null;
+          }
+        },
+      };
 
-      setInterval(updateStockCount, 30000); // Update every 30 seconds
+      // Initialize when DOM is ready
+      document.addEventListener("DOMContentLoaded", () => {
+        countdownTimer.init();
+      });
 
-      // Recent Order Notifications
-      const locations = [
-        "Lagos",
-        "Abuja",
-        "Port Harcourt",
-        "Ibadan",
-        "Kano",
-        "Enugu",
-      ];
-
-      function showRecentOrder() {
-        const notification = document.getElementById(
-          "recentOrdersNotification"
-        );
-        const location =
-          locations[Math.floor(Math.random() * locations.length)];
-
-        notification.querySelector(
-          ".name"
-        ).textContent = `Someone from ${location}`;
-        notification.classList.add("show");
-
-        setTimeout(() => {
-          notification.classList.remove("show");
-        }, 5000);
-      }
-
-      // Show notification every 45-90 seconds
-      function scheduleNextNotification() {
-        const delay = Math.random() * (90000 - 45000) + 45000;
-        setTimeout(() => {
-          showRecentOrder();
-          scheduleNextNotification();
-        }, delay);
-      }
-
-      scheduleNextNotification();
+      // Cleanup on page unload
+      window.addEventListener("unload", () => {
+        countdownTimer.destroy();
+      });
     </script>
 
     <!-- jquery js -->
