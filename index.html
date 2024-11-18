@@ -1709,6 +1709,29 @@
           line-height: 1.3;
         }
       }
+
+      /* Update the paragraph styling */
+      p.con {
+        font-size: 24px;
+        line-height: 1.5;
+      }
+
+      /* Mobile optimization */
+      @media (max-width: 768px) {
+        p.con {
+          font-size: 20px; /* Increased from previous size */
+          line-height: 1.4;
+          margin-bottom: 1.5rem;
+        }
+      }
+
+      /* Extra small devices */
+      @media (max-width: 375px) {
+        p.con {
+          font-size: 18px; /* Still maintaining good readability on very small screens */
+          line-height: 1.4;
+        }
+      }
     </style>
   </head>
 
@@ -2043,11 +2066,7 @@
               <h4>🎄 Limited Time Offer! 🎄</h4>
               <br />
               <p class="con">
-                Order now and unlock an exclusive holiday discount! Beat
-                inflation by securing today's price—no price increases, no
-                hidden fees. Get your organic chicken delivered fresh and ready
-                to cook, perfectly timed for your Christmas and New Year
-                celebrations!
+                Order now to take advantage of exclusive holiday savings! Lock in your discount today and beat inflation—no price hikes, no hidden fees. Enjoy fresh, organic chicken delivered straight to you, just in time for your Christmas and New Year celebrations!
               </p>
             </div>
             <div class="contact_infoss">
