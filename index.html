@@ -2618,8 +2618,7 @@
         lifeQuantity = Math.max(0, lifeQuantity);
         packagedQuantity = Math.max(0, packagedQuantity);
 
-        // Calculate total (₦12000 per chicken)
-        const total = (lifeQuantity + packagedQuantity) * 12000;
+     
 
         // Display formatted total with Naira symbol and thousands separator
         priceElement.textContent = `₦${total.toLocaleString("en-NG")}`;
@@ -2957,10 +2956,10 @@
         
         // Calculate discount (₦500 per chicken, starting from second chicken)
         let discount = 0;
-        if (totalChickens > 1) {
-            // Subtract 1 from total chickens to exclude first purchase from discount
-            discount = (totalChickens - 1) * 500;
-        }
+        // if (totalChickens > 1) {
+        //     // Subtract 1 from total chickens to exclude first purchase from discount
+        //     discount = (totalChickens - 1) * 500;
+        // }
 
         // Get the discount element and update its content
         const discountElement = document.querySelector(".discount");
@@ -2989,18 +2988,20 @@
         // Calculate total number of chickens
         const totalChickens = lifeQuantity + packagedQuantity;
         
-        // Calculate subtotal (₦12000 per chicken)
-        const subtotal = totalChickens * 12000;
+        // Calculate subtotal with different prices
+        const lifeChickenPrice = 13000;
+        const packagedChickenPrice = 13500;  // Updated to ₦13,500
+        const subtotal = (lifeQuantity * lifeChickenPrice) + (packagedQuantity * packagedChickenPrice);
         
         // Initialize discount
         let totalDiscount = 0;
 
         // Skip first chicken and calculate discounts for remaining chickens
-        if (totalChickens > 1) {
-            for (let i = 2; i <= totalChickens; i++) {
+        if (totalChickens >= 1) {
+            for (let i = 1; i <= totalChickens; i++) {
                 if (i % 2 === 0) {
                     // Even numbered purchases get ₦500 discount
-                    totalDiscount += 500;
+                    totalDiscount += 1000;
                 } else {
                     // Odd numbered purchases (after first) get ₦1000 discount
                     totalDiscount += 1000;
