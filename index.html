@@ -2373,21 +2373,25 @@
                   <div class="contact-form">
                     <div class="price-display">
                       <div class="price-row">
-                        <h4 class="price-label">Sub Total:</h4>
+                        
+                        <h4 class="price-label">Sub Total:</h4> 
+    
                         <p class="price">₦0</p>
                       </div>
-                      <div class="price-row">
+                      <!-- 
+                        <div class="price-row">
                         <h4 class="price-label">Discount:</h4>
                         <p class="discount">₦0</p>
                       </div>
                       <div class="price-row total-savings-row">
                         <h4 class="price-label">Total Savings:</h4>
                         <p class="total-savings">₦0</p>
-                      </div>
+                      </div> 
                       <div class="price-row total-due-row">
                         <h4 class="price-label">Total Payment Due:</h4>
                         <p class="total-due">₦0</p>
                       </div>
+                    -->
                     </div>
 
                     <button type="submit" class="order-button">
@@ -2623,11 +2627,6 @@
 
         // Display formatted total with Naira symbol and thousands separator
         priceElement.textContent = `₦${total.toLocaleString("en-NG")}`;
-
-        // For debugging - remove after confirming it works
-        console.log("Life Quantity:", lifeQuantity);
-        console.log("Packaged Quantity:", packagedQuantity);
-        console.log("Total:", total);
       }
 
       // Add event listeners to both input fields
@@ -2959,7 +2958,7 @@
         let discount = 0;
         if (totalChickens > 1) {
             // Subtract 1 from total chickens to exclude first purchase from discount
-            discount = (totalChickens - 1) * 500;
+            discount = (totalChickens - 1) * 0;
         }
 
         // Get the discount element and update its content
@@ -3000,10 +2999,10 @@
             for (let i = 2; i <= totalChickens; i++) {
                 if (i % 2 === 0) {
                     // Even numbered purchases get ₦500 discount
-                    totalDiscount += 500;
+                    totalDiscount += 0;
                 } else {
                     // Odd numbered purchases (after first) get ₦1000 discount
-                    totalDiscount += 1000;
+                    totalDiscount += 0;
                 }
             }
         }
